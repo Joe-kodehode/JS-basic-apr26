@@ -1,163 +1,169 @@
-// Lesson 1: Into to JS
+// Conditionals
 
-// Comments in JS
-// ctrl + *             to comment one line
-// shift + alt + a      to comment multiple lines
+// Section 1: typeof
 
-// Useful hotkeys
-// shift + alt + down arrow = copy current line
-// ctrl + enter = jump to next line without messing up current line
-// ctrl + d = highlight next instance of already highlighted selection
-// alt + up/down = moves the current line up or down
+// typeof returns the variable type. (string, number, boolean, object etc)
+let myVariable = "this is a string";
+console.log(typeof myVariable);
 
-// Console log
+// Section 2: Comparison Operators
 
-console.log("This text will go to the console");
+// These operators compare values and return a boolean (true or false).
 
-// camelCase
-// this is when we write the first word's letter in lowercase and subesequent first letters of words in uppercase. It's used for naming variables and functions in JS.
+console.log(15 > 20); // Greater than (>) operator
+console.log(15 < 20); // Less than (<) operator
 
-// Variables and simple data types
+console.log(15 >= 20); // Greater than or equal to (>=) operator
+console.log(15 >= 15);
 
-// String (text in JS)
-let exampleString = "hello, I am a string";
-console.log(exampleString);
-exampleString = "Now this string is inside the variable";
-console.log(exampleString);
+console.log(15 <= 20); // Less than or equal to (<=) operator
+console.log(15 <= 15);
 
-// Number (both integers and decimals are Numbers in JS)
-let exampleNumber = 42;
-console.log(exampleNumber);
+// The equality (==) operator checks if values are equal (with type conversion):
+console.log(15 == "15"); // true due to type coercion
 
-// Boolean (true/false)
-let exampleTrue = true;
-let exampleFalse = false;
-console.log(exampleTrue);
-console.log(exampleFalse);
+// Strict equality (===) operator checks for both value and type:
+console.log(15 === "15"); // false, because the types differ (number vs string)
 
-// Array - can store more than one piece of data. Arrays are numbered, this is called "index". Indexes start at 0!
-let exampleArray = ["first element", "second element", "third element"];
-console.log(exampleArray);
-
-console.log(exampleArray[0]);
-console.log(exampleArray[1]);
-console.log(exampleArray[2]);
-
-// Objects store key value pairs.
-let person = {
-  name: "Joe",
-  age: 38,
-  location: "Stavanger",
-  isPremium: false,
-};
-console.log(person);
-
-// Undefined (declared but not assigned a value)
-let exampleUndefined;
-console.log(exampleUndefined);
-
-// Null (A intentional absence of value)
-let nullExample = null;
-console.log(nullExample);
-
-// Let vs Const
-// Use "const" as default. Only use "let" if the value of the variable has to change.
-let changeableMessage = "I can change!";
-console.log(changeableMessage);
-changeableMessage = "I've changed!";
-console.log(changeableMessage);
-
-const fixedMessage = "I cannot change!";
-// fixedMessage = "I'm trying to change!";
-console.log(fixedMessage);
-
-// Basic Operators
-// Operators perform calculations or comparisons.
-
-// Arithmetic operators:
-let num1 = 6;
-let num2 = 5;
-// addition
-console.log(num1 + num2);
-// subtraction
-console.log(num1 - num2);
-// multiplication
-console.log(num1 * num2);
-// division
-console.log(num1 / num2);
-// modulus/modulo - remainder
-console.log(num1 % num2);
-
-// using the + operator with strings to concatenate them
-
-let firstName = "Jane";
-let lastName = "Doe";
-let fullName = firstName + " " + lastName;
-
-console.log("The user's name is" + " " + fullName);
-
-// Increment operator (increases the count by 1)
-let counter = 0;
-counter++;
-counter++;
-counter++;
-counter++;
-console.log(counter);
-
-// Decrement operator (decrease the count by 1)
-counter--;
-counter--;
-counter--;
-console.log(counter);
-
-// Compound assignment operators
-
-// Addition assignment
-let score = 10;
-score = score + 10;
-// Does the same but with less code (better, use this!)
-score += 10;
-console.log(score);
-
-// Subtraction assignment
-score = score - 3;
-// Does the same but with less code (better, use this!)
-score -= 3;
-console.log(score);
-
-// Multiplication assignment (*=):
-score *= 2; // Equivalent to score = score * 2;
-console.log("After multiplying by 2:", score); // 24
-
-// Division assignment (/=):
-score /= 4; // Equivalent to score = score / 4;
-console.log("After dividing by 4:", score); // 6
-
-// Remainder/modulo assignment (%=):
-score %= 5; // Equivalent to score = score % 5;
-console.log("After modulus 5:", score); // 6 mod 5 equals 1
-
-// Comparison operators
-// Greater than >
-// is 5 greater than 10 ? no.   false.
-console.log(5 > 10);
-
-// Less than <
-console.log(5 < 10);
-
-// Greater than or equal to. >=  Less than or equal to. <=
-// is 10 less than or equal to 10.
-console.log(10 <= 10);
-console.log(5 >= 5);
-
-// Equal to (does NOT take into account data type)
-console.log(10 == "10");
-
-// STRICTLY equal to (Takes into account data type!) use this one 99.9% of the time!
-console.log(10 === "10");
-
-// Not equal to (does NOT take into account data type)
+console.log(15 != 20); // Not equal (!=) operator
 console.log(15 != "15");
 
-// STRICTLY not equal to (Takes into account data type!) use this one 99.9% of the time!
-console.log(15 !== "15");
+console.log(15 !== "15"); // Strict not equal (!==) operator
+
+// Section 3: Conditionals with if, else if... else if... else
+
+// basic if/else if statement:
+
+let temperature = -5;
+if (temperature > 30) {
+  console.log("It's a VERY hot day!");
+} else if (temperature > 25) {
+  console.log("It's a hot day");
+} else if (temperature > 20) {
+  console.log("It's a warm day");
+} else if (temperature > 1) {
+  console.log("It's an okay day");
+} else {
+  console.log("It's freezing!");
+}
+
+// Section 4: Logical Operators: && / ||
+
+let age = 18;
+let hasLicense = true;
+let isBanned = false;
+
+// With logical and (&&) all checks must come back as true
+if (age >= 18 && hasLicense === true && isBanned === false) {
+  console.log("You are allowed to drive");
+} else {
+  console.log("You can't drive!");
+}
+
+let joeNorwegian = true;
+// If you're checking if something is true, you don't need the === true.
+if (joeNorwegian) {
+  console.log("Velkommen!");
+}
+
+// Logical OR || - requires ONE of the checks to come back true.
+
+let day = "Wednesday";
+if (day === "Saturday" || day === "Sunday") {
+  console.log("It's the weekend! Yipee!");
+} else if (
+  day === "Monday" ||
+  day === "Tuesday" ||
+  day === "Wednesday" ||
+  day === "Thursday" ||
+  day === "Friday"
+) {
+  console.log("It's a weekday");
+} else {
+  console.log("That's not a day!!");
+}
+
+// Using both && and || in the same check.
+
+let referal = false;
+let firstShop = true;
+let premiumMember = false;
+
+if ((referal && firstShop) || premiumMember) {
+  console.log("You get a reduced price");
+} else {
+  console.log("You pay full price!");
+}
+
+// Section 5: Ternary Operators
+
+// The ternary operator is like a shortcut for a simple if / else statement.
+
+let isMember = true;
+
+// let fee = "$10";
+// if (isMember) {
+//   fee = "$5";
+// }
+
+let fee = isMember ? "$5" : "$10";
+
+console.log("Your fee is:", fee);
+
+// Section 6: Switch Statement
+
+let fruit = "strawberry";
+
+switch (fruit) {
+  case "banana":
+    console.log("That's not a fruit! It's a berry!");
+    break;
+  case "apple":
+    console.log("This one simple trick will keep all the doctors away");
+    break;
+  case "orange":
+    console.log("Oranges are full of vitamin C");
+    break;
+  default:
+    console.log("Unknown fruit detected!");
+}
+
+// Use if/else for complex or varied Conditionals
+// Use switch for one variable with many fixed values
+
+// Section 7: Truthy and Falsey values
+
+let value = "change me to test";
+if (value) {
+  console.log("This is true!");
+} else {
+  console.log("This is false!");
+}
+
+// True
+// a string with value
+// a positive integer
+// a negative integer
+// an array with elements inside
+// an empty array
+// an empty object
+// an object with key/value pairs
+
+// False
+// an empty sting
+// 0
+// undefined
+// null
+// NaN
+
+// Section 8: Template Literal // Template String
+
+const firstName = "Joe";
+const lastName = "Nordmann";
+const weekday = "Tuesday";
+const welcomeMsg =
+  "Welcome" + " " + firstName + " " + lastName + " " + "to our website!";
+
+const welcomeMsg2 = `Welcome ${firstName} ${lastName} to our website on this fine ${weekday}!`;
+
+console.log(welcomeMsg2);
