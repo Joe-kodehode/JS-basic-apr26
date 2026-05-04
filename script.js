@@ -1,203 +1,148 @@
-// Lesson 3: Week 1 recap
+// Lesson 4: Functions
 
-// Section 1: Variables, Data Types and Operators
+// A function is a block of code designed to do one specific task. It lets you write code once and reuse it, keeping your program clean and organized. However, the function won't do anything until you call it.
 
-// Scenario: An online store managing products.
-const storeName = "Joe's Hardware"; // Strings
-const productName = "Wireless Earbuds";
-let productPrice = 90; // Integer / Int
-let productQuantity = 3;
-let isInStock = true;
-const productTags = ["audio", "wireless", "accessory"]; // Arrays store multiple elements
-let discount; // undefined
+// Section 1: Function Declarations and Hoisting
 
-// Object array / Array of objects
-// const komplettStock = [
-//   {
-//     productName: "sony headphones",
-//     price: 2999,
-//     stock: 4,
-//   },
-//   {
-//     productName: "robot vaccum",
-//     price: 4995,
-//     stock: 0,
-//   },
-// ];
-// JSON
-
-// Display variable values using console.log()
-console.log(storeName);
-console.log(productName);
-console.log(productPrice);
-console.log(productQuantity);
-console.log(isInStock);
-console.log(productTags);
-console.log(discount);
-// You can target specific indexes of arrays. Indexes start at 0!
-console.log(productTags[1]);
-
-// Arithmetic operations: Calculate the total cost of our earbuds in stock.
-
-const totalValue = productPrice * productQuantity;
-console.log("Total value is:", totalValue);
-
-// Increase the price by 10.
-productPrice = productPrice + 10;
-productPrice += 10; // Both lines of code do the same, but do it this way!
-
-productPrice -= 5;
-
-console.log(productPrice);
-
-// Increment/Decrement the stock by 1
-console.log(productQuantity);
-productQuantity += 1;
-productQuantity++; //both lines do the same, use ++!
-
-productQuantity -= 1;
-productQuantity--; //both lines do the same, use --!
-
-console.log(productQuantity);
-
-// Find the remainder when total cost is divided by 50
-const remainder = totalValue % 50;
-console.log(totalValue / 50); // 50 50 50 50 50 20
-console.log(remainder);
-
-// Section 2: Conditionals and Logical Operators
-
-let basketSize = 275;
-
-// If their basket size is over 300, they qualify for a discount.
-//
-if (basketSize > 300) {
-  console.log("Congratulations, you qualify for a premium discount!");
-} else if (basketSize > 250) {
-  console.log("You're close to a discount! Spend over 300 to get it");
-} else {
-  console.log("If you spend more than 300 you will get a discount");
+// This function logs a simple greeting. It is "hoisted" to the top of our script.js meaning we can call the function even before creating it.
+function sayHello() {
+  console.log("hello");
 }
 
-// Logical &&  Logical ||
+sayHello();
 
-// Show a special message if the product is in stock AND it's on sale (discount = true) OR we have a high quantity (productStock = 100+)
-// "Special offer, 15% discount!"
-discount = false;
-productQuantity += 200;
+// Section 2: Arrow functions.
 
-if (isInStock && (discount || productQuantity >= 100)) {
-  console.log("Special offer, 15% discount!");
-} else {
-  console.log("no discount for you!");
+// An arrow function expression. Is NOT hoisted, we can't call it before it is created in the code.
+const arrowFunction = () => {
+  console.log("Hello from the arrow function");
+};
+
+arrowFunction();
+
+// Section 3: Return statement and scope
+
+// creating a variable inside a function means it is scoped only to that function (can't be accessed outside the function)
+// No code after a return gets read. Return is always the last thing in a function.
+
+function returnExample() {
+  const myMessage = 5;
+  return myMessage;
 }
 
-// Ternary
-// Determine free shipping based on basketSize
+console.log(returnExample());
+// let returnedData = returnExample();
 
-basketSize += 1000;
+// Section 4: Functions with Parameters
 
-// let shippingCost = "";
-// if (basketSize > 500) {
-//   shippingCost = "Free shipping!";
-// } else {
-//   shippingCost = "500kr";
-// }
+// Example of hard coding
 
-let shippingCost = basketSize > 500 ? "free shipping" : "500kr";
-
-console.log(shippingCost);
-
-// Switch statement
-
-let category = "hamburger";
-
-switch (category) {
-  case "audio":
-    console.log("This product is in the audio department");
-    break;
-  case "accessory":
-    console.log("This product is in accessories");
-    break;
-  case "gadget":
-    console.log("This is in our gadgets section");
-    break;
-  default:
-    console.log(
-      "We don't sell this item. Please leave before I call security.",
-    );
+function add() {
+  return 3 + 4;
 }
 
-// Section 3: typeof and truthy/Falsey
-console.log(typeof storeName);
-console.log(typeof productPrice);
+console.log(add());
 
-if (typeof productPrice === "string") {
-  console.log("The variable is a string.");
-} else if (typeof productPrice === "number") {
-  console.log("The variable is a number.");
+// Example of dynamic function, using parameters. This makes our function reusable with different data each function call.
+
+function minus(num1, num2) {
+  return num1 - num2;
+}
+console.log(minus(4, 3));
+console.log(minus(10, 5));
+console.log(minus(50, 27));
+
+// Example of dynamic function using strings.
+// A greeter function that uses parameters and template literals.
+
+const greeter = (timeOfDay, firstName) => {
+  return `Good ${timeOfDay} ${firstName}.`;
+};
+
+console.log(greeter("Morning", "Joe"));
+console.log(greeter("Evening", "Dan"));
+console.log(greeter("Night", "Kent"));
+
+// Section 5: Implicit return. This removes the return and {}, only useable when you have nothing else but a return inside your arrow function.
+
+// const adder = (num1, num2) => {
+//   return num1 + num2;
+// };
+
+const adder = (num1, num2) => num1 + num2;
+
+console.log(adder(10, 5));
+console.log(adder(50, 50));
+
+// Section 6: Calculator function using a switch statement.
+
+function calculator(operator, num1, num2) {
+  switch (operator) {
+    case "+":
+      return num1 + num2;
+    case "-":
+      return num1 - num2;
+    case "/":
+      return num1 / num2;
+    case "*":
+      return num1 * num2;
+    default:
+      return "Not a valid operator!";
+  }
 }
 
-// Truthy / Falsey
+console.log(calculator("+", 10, 5));
+console.log(calculator("-", 100, 23));
+console.log(calculator("/", 1000, 25));
+console.log(calculator("*", 10, 10));
+console.log(calculator("chicken nugget", 10, 10));
 
-let value = Infinity;
-if (value) {
-  console.log("This is true!");
-} else {
-  console.log("This is false!");
-}
+// Section 7: Updating a global variable via a Function
 
-// True
-// a string with value
-// a positive integer
-// a negative integer
-// an array with elements inside
-// an empty array
-// an empty object
-// an object with key/value pairs
-// Infinity
+// We're making a game and we need a function to update the player's health.
 
-// False
-// an empty sting
-// 0
-// undefined
-// null
-// NaN
+// 1 - health should never go above 100.
+// 2 - if health goes to or below 0, tell the user they died and reset health to 100.
 
-// Secion 4: Template Literals / Template Strings
+let health = 100;
 
-const firstName = "Henry";
-const lastName = "Hanson";
-const city = "Edinburogh";
-const country = "New Zealand";
+const updateHp = (change, amount) => {
+  if (change === "heal") {
+    health += amount;
+    if (health > 100) {
+      health = 100;
+    }
+  } else if (change === "damage") {
+    health -= amount;
+    if (health <= 0) {
+      console.log("You died!");
+      health = 100;
+    }
+  }
+};
 
-// Dynamic!
+console.log(health);
+updateHp("damage", 199);
+console.log(health);
+// updateHp("heal", 100);
+// console.log(health);
 
-const welcomeMessage = `Welcome, ${firstName} ${lastName} from ${city}, ${country}! We hope you enjoy shopping with us!`;
+// Section 8: Using Template Strings and Ternary Operator in a Function
 
-// const welcomeMessage =
-//   "Welcome," +
-//   " " +
-//   firstName +
-//   " " +
-//   lastName +
-//   " " +
-//   "from" +
-//   " " +
-//   city +
-//   " " +
-//   country +
-//   "!" +
-//   " " +
-//   "We hope you enjoy shoping with us!";
+const fruits = ["Banana", "Apple", "Pear", "Kiwi"];
 
-console.log(welcomeMessage);
+// const checkItem = (item) => {
+//   if (fruits.includes(item)) {
+//     return "Your item is in the array";
+//   } else {
+//     return "Your item is not in the array";
+//   }
+// };
 
-// Section 5: Mixing Ternary and Template string
+const checkItem = (item) =>
+  `Your item is ${fruits.includes(item) ? "" : "not"} in the array`;
 
-// if the basketSize is over 1000, they ARE eligible for free delivery
-basketSize = 1;
-
-const delivery = `You ${basketSize > 1000 ? "are" : "aren't"} eligible for free delivery`;
-
-console.log(delivery);
+// console.log(checkItem("Apple"));
+console.log(checkItem("Fries"));
+// console.log(checkItem("Kiwi"));
+// console.log(checkItem("Chicken nuggies"));
