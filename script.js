@@ -94,4 +94,6 @@ console.log(messageFromArr);
 
 // Example 3
 let num1 = 100.12345;
-// Take a number, round it to 2 decimals, convert it into a string and repeat it twice.
+// Take a number, round it to 2 decimals and convert to string, repeat it twice.
+
+console.log(num1.toFixed(2).repeat(2));
